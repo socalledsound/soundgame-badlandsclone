@@ -352,13 +352,4 @@ class SpeedBumpBall extends Ball {
 }
 
 
-class SwarmBall extends Ball {
-    constructor(ballOptions){
-        super(ballOptions)
 
-    }
-
-
-
-
-}

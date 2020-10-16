@@ -39,13 +39,17 @@ const bumpBalls = Array.from({length: 4 }, (ball, i)=>{
     return new SpeedBumpBall({id: i, startX: i * 200, ...speedBumpBallOptions});
 });
 
-const swarmBalls = Array.from({length: 20 }, (ball, i)=>{
-    const randomX = Math.random() * 500;
-    return new SwarmBall({id: i, startX: i * 10 + randomX, startY: 100 + (i * Math.random() * 10), ...swarmBallOptions});
-});
+// const swarmBalls = Array.from({length: 20 }, (ball, i)=>{
+//     const randomX = Math.random() * 500;
+//     return new SwarmBall({id: i, startX: i * 10 + randomX, startY: 100 + (i * Math.random() * 10), ...swarmBallOptions});
+// });
 
 const clouds = Array.from({length: 6}, (cloud, i) => {
     return new Cloud(i * (Math.random()* 100) + (i*50), Math.random() * 300);
+});
+
+const swarmBalls = Array.from({length: 20}, (swarmball, i) => {
+    return new swarmBalls({id: i, startX: width/2, startY: 100, ...swarmBallOptions})
 })
 
 const numSounds = 8;
@@ -144,7 +148,7 @@ function drawGame(){
     bumpBalls.forEach((bumpball, i) => {
         if(bumpball.x < -bumpball.radius){
             soundCounter++;
-            bumpball.x = 850;
+            bumpball.x = 800 + 500 + Math.random() * 200;
             bumpball.sound = sounds[soundCounter%numSounds];
 
         }
@@ -153,9 +157,9 @@ function drawGame(){
 
     })
 
-    swarmBalls.forEach(swarmball => {
-        swarmball.display();
-    })
+    // swarmBalls.forEach(swarmball => {
+    //     swarmball.display();
+    // })
 
 
     if(keyIsDown(UP_ARROW)){
@@ -165,7 +169,6 @@ function drawGame(){
 
     
         if(keyIsDown(LEFT_ARROW)){
-            
             myHero.moveLeft(bumpBalls);
         }
     
